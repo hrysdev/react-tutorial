@@ -1,12 +1,8 @@
-# Tutorial: Tic-Tac-Toe
+# チュートリアル：三目並べ
 
 React + TypeScript + Vite による「[チュートリアル：三目並べ](https://ja.react.dev/learn/tutorial-tic-tac-toe)」の実装例 + α
 
-## Requirement
-
-- Node: v22.1.0
-
-## Usage
+## パッケージのインストール
 
 ```
 // パッケージのインストール
@@ -16,7 +12,7 @@ npm install
 npm run dev
 ```
 
-## Next Level
+## 追加実装
 
 1. 現在の着手の部分だけ、ボタンではなく “You are at move #…” というメッセージを表示するようにする。
 1. マス目を全部ハードコードするのではなく、Board を 2 つのループを使ってレンダーするよう書き直す。
