@@ -1,7 +1,11 @@
-import { useState } from "react";
+import Square from "./components/Square";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Square />
+    </>
+  );
 }
 
 export default App;
