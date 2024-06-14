@@ -2,7 +2,7 @@
 
 React + TypeScript + Vite による「[チュートリアル：三目並べ](https://ja.react.dev/learn/tutorial-tic-tac-toe)」の実装例 + α
 
-## パッケージのインストール
+## 環境構築
 
 ```
 // パッケージのインストール
