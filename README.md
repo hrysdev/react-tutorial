@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Tutorial: Tic-Tac-Toe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite による「[チュートリアル：三目並べ](https://ja.react.dev/learn/tutorial-tic-tac-toe)」の実装例 + α
 
-Currently, two official plugins are available:
+## Requirement
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node: v22.1.0
 
-## Expanding the ESLint configuration
+## Usage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```
+// パッケージのインストール
+npm install
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+// 開発サーバを起動
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Next Level
+
+1. 現在の着手の部分だけ、ボタンではなく “You are at move #…” というメッセージを表示するようにする。
+1. マス目を全部ハードコードするのではなく、Board を 2 つのループを使ってレンダーするよう書き直す。
+1. 手順を昇順または降順でソートできるトグルボタンを追加する。
+1. どちらかが勝利したときに、勝利につながった 3 つのマス目をハイライト表示する。引き分けになった場合は、引き分けになったという結果をメッセージに表示する。
+1. 着手履歴リストで、各着手の場所を (row, col) という形式で表示する。
