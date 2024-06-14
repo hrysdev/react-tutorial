@@ -3,5 +3,13 @@ type SquareProps = {
 };
 
 export default function Square({ value }: SquareProps) {
-  return <button className="square">{value}</button>;
+  const handleClick = () => {
+    console.log("clicked!");
+  };
+
+  return (
+    <button className="square" onClick={handleClick}>
+      {value}
+    </button>
+  );
 }
