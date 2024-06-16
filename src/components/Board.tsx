@@ -11,18 +11,24 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
+
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
     } else {
       nextSquares[i] = "O";
     }
+
     onPlay(nextSquares);
   };
 
+  const isDraw = !squares.includes(null) && !calculateWinner(squares);
   const winner = calculateWinner(squares);
+
   let status;
-  if (winner) {
+  if (isDraw) {
+    status = "Draw!";
+  } else if (winner) {
     status = `Winner: ${winner}`;
   } else {
     status = `Next player: ${xIsNext ? "X" : "O"}`;
