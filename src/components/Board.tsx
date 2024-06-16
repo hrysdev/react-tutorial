@@ -7,23 +7,21 @@ type BoardProps = {
 };
 
 export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
+  const { winner, line } = calculateWinner(squares) || {};
   const handleClick = (i: number) => {
-    if (squares[i] || calculateWinner(squares)?.winner) {
+    if (squares[i] || winner) {
       return;
     }
-
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
     } else {
       nextSquares[i] = "O";
     }
-
     onPlay(nextSquares);
   };
 
-  const isDraw = !squares.includes(null) && !calculateWinner(squares)?.winner;
-  const winner = calculateWinner(squares)?.winner;
+  const isDraw = !squares.includes(null) && !winner;
 
   let status;
   if (isDraw) {
@@ -47,6 +45,7 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
                   key={index}
                   value={squares[index]}
                   onSquareClick={() => handleClick(index)}
+                  isWinnerSquare={line?.includes(index)}
                 />
               );
             })}

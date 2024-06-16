@@ -1,8 +1,19 @@
-type SquareProps = { value: string | null; onSquareClick: () => void };
+type SquareProps = {
+  value: string | null;
+  onSquareClick: () => void;
+  isWinnerSquare?: boolean;
+};
 
-export default function Square({ value, onSquareClick }: SquareProps) {
+export default function Square({
+  value,
+  onSquareClick,
+  isWinnerSquare,
+}: SquareProps) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button
+      className={`square ${isWinnerSquare ? "winner-square" : ""}`}
+      onClick={onSquareClick}
+    >
       {value}
     </button>
   );
