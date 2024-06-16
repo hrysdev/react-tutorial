@@ -1,4 +1,4 @@
-type SquareProps = { value: string; onSquareClick: () => void };
+type SquareProps = { value: string | null; onSquareClick: () => void };
 
 export default function Square({ value, onSquareClick }: SquareProps) {
   return (
