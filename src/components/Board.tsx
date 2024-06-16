@@ -2,8 +2,8 @@ import Square from "./Square";
 
 type BoardProps = {
   xIsNext: boolean;
-  squares: string[];
-  onPlay: (nextSquares: string[]) => void;
+  squares: (string | null)[];
+  onPlay: (nextSquares: (string | null)[]) => void;
 };
 
 export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
@@ -51,7 +51,7 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
   );
 }
 
-function calculateWinner(squares: string[]) {
+function calculateWinner(squares: (string | null)[]) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
