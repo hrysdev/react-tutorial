@@ -2,10 +2,9 @@ import { useState } from "react";
 import Board from "./Board";
 
 export default function Game() {
-  const [history, setHistory] = useState<Array<Array<string>>>([
-    Array(9).fill(null),
-  ]);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState<number>(0);
+  const [isAsc, setIsAsc] = useState(false);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -15,11 +14,15 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   };
 
+  const handleSort = () => {
+    setIsAsc(!isAsc);
+  };
+
   const jumpTo = (nextMove: number) => {
     setCurrentMove(nextMove);
   };
 
-  const moves = history.map((squares, move) => {
+  const moves = history.map((_, move) => {
     let description;
     if (move > 0) {
       description = `Go to move #${move}`;
@@ -37,13 +40,18 @@ export default function Game() {
     );
   });
 
+  if (!isAsc) {
+    moves.reverse();
+  }
+
   return (
     <div className="game">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <button onClick={handleSort}>{isAsc ? "Sort Asc" : "Sort Desc"}</button>
+        <ol reversed={isAsc}>{moves}</ol>
       </div>
     </div>
   );
