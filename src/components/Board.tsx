@@ -8,7 +8,7 @@ type BoardProps = {
 
 export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
   const handleClick = (i: number) => {
-    if (squares[i] || calculateWinner(squares)) {
+    if (squares[i] || calculateWinner(squares)?.winner) {
       return;
     }
 
@@ -22,8 +22,8 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
     onPlay(nextSquares);
   };
 
-  const isDraw = !squares.includes(null) && !calculateWinner(squares);
-  const winner = calculateWinner(squares);
+  const isDraw = !squares.includes(null) && !calculateWinner(squares)?.winner;
+  const winner = calculateWinner(squares)?.winner;
 
   let status;
   if (isDraw) {
@@ -70,7 +70,7 @@ function calculateWinner(squares: (string | null)[]) {
   ];
   for (const [a, b, c] of lines) {
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { winner: squares[a], line: [a, b, c] };
     }
   }
   return null;
