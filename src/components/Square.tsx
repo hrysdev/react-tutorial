@@ -1,17 +1,17 @@
 type SquareProps = {
   value: string | null;
-  isWinnerSquare?: boolean;
+  isWinner?: boolean;
   onSquareClick: () => void;
 };
 
 export default function Square({
   value,
-  isWinnerSquare,
+  isWinner,
   onSquareClick,
 }: SquareProps) {
   return (
     <button
-      className={`square ${isWinnerSquare ? "winner-square" : ""}`}
+      className={`square ${isWinner ? "winner" : ""}`}
       onClick={onSquareClick}
     >
       {value}
