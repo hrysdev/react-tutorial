@@ -22,17 +22,23 @@ export default function Game() {
     setCurrentMove(nextMove);
   };
 
-  const moves = history.map((_, move) => {
+  const moves = history.map((squares, move) => {
+    let location = "";
+    if (move > 0) {
+      const index = history[move - 1].findIndex((e, i) => e !== squares[i]);
+      location = `(${Math.floor(index / 3) + 1}, ${(index % 3) + 1})`;
+    }
+
     let description;
     if (move > 0) {
-      description = `Go to move #${move}`;
+      description = `Go to move #${move} ${location}`;
     } else {
       description = "Go to game start";
     }
     return (
       <li key={move}>
         {move === currentMove ? (
-          `You are at move ${move}…`
+          `You are at move #${move}… ${location}`
         ) : (
           <button onClick={() => jumpTo(move)}>{description}</button>
         )}
