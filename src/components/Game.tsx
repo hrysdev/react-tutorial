@@ -23,12 +23,14 @@ export default function Game() {
   };
 
   const moves = history.map((squares, move) => {
+    // 一つ前の盤面との差分を取得
     let location = "";
     if (move > 0) {
       const index = history[move - 1].findIndex((e, i) => e !== squares[i]);
       location = `(${Math.floor(index / 3) + 1}, ${(index % 3) + 1})`;
     }
 
+    // 着手の描画
     let description;
     if (move > 0) {
       description = `Go to move #${move} ${location}`;
