@@ -46,10 +46,6 @@ export default function Game() {
     );
   });
 
-  if (!isAsc) {
-    moves.reverse();
-  }
-
   return (
     <div className="game">
       <div className="game-board">
@@ -57,7 +53,7 @@ export default function Game() {
       </div>
       <div className="game-info">
         <button onClick={handleSort}>{isAsc ? "Sort Asc" : "Sort Desc"}</button>
-        <ol reversed={isAsc}>{moves}</ol>
+        <ol reversed={isAsc}>{isAsc ? moves.reverse() : moves}</ol>
       </div>
     </div>
   );
