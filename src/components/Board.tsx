@@ -7,7 +7,7 @@ type BoardProps = {
 };
 
 export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
-  const { winner, line } = calculateWinner(squares) || {};
+  const { winner, line } = calculateWinner(squares);
   const handleClick = (i: number) => {
     if (squares[i] || winner) {
       return;
@@ -72,5 +72,5 @@ function calculateWinner(squares: (string | null)[]) {
       return { winner: squares[a], line: [a, b, c] };
     }
   }
-  return null;
+  return { winner: null, line: null };
 }
