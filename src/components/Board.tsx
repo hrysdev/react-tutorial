@@ -44,8 +44,8 @@ export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
                 <Square
                   key={index}
                   value={squares[index]}
-                  onSquareClick={() => handleClick(index)}
                   isWinnerSquare={line?.includes(index)}
+                  onSquareClick={() => handleClick(index)}
                 />
               );
             })}

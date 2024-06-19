@@ -1,13 +1,13 @@
 type SquareProps = {
   value: string | null;
-  onSquareClick: () => void;
   isWinnerSquare?: boolean;
+  onSquareClick: () => void;
 };
 
 export default function Square({
   value,
-  onSquareClick,
   isWinnerSquare,
+  onSquareClick,
 }: SquareProps) {
   return (
     <button
